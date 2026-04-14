@@ -1,0 +1,20 @@
+---
+description: pnpm workspace 与 monorepo 管理规范
+globs: package.json,pnpm-workspace.yaml,**/package.json
+alwaysApply: false
+---
+
+# Monorepo 管理规范 (pnpm)
+
+## 总体指南
+
+1. 当前 workspace 主要包为 `backend`、`desktop`、`frontend`。
+2. 依赖安装统一在仓库根目录执行 `pnpm install`。
+3. 运行单包命令使用 `pnpm -F <packageName> <script>` 或 `pnpm --filter <packageName> <script>`。
+4. 内部包依赖使用 `workspace:^`（例如 `frontend` 依赖 `backend` 类型）。
+
+## 构建与联动
+
+1. 修改 `packages/backend/**/*.rs` 后，先执行 `pnpm -F backend build:debug`，确保 `.node` 与 `index.d.ts` 更新。
+2. 前端类型检查建议执行 `pnpm -F frontend exec vue-tsc --noEmit`。
+3. IPC 变更要保证三端同步：`backend` 导出、`desktop` handler、`frontend` API 封装。

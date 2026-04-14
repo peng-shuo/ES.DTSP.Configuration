@@ -1,0 +1,48 @@
+---
+description: Rust 和 N-API 后端开发规范
+globs: packages/backend/**/*.rs
+alwaysApply: false
+---
+
+# Rust 后端开发规范 (napi-rs & sea-orm)
+
+## 技术栈
+
+- **napi-rs**: 用于构建编译后的 Node.js 原生扩展（Addon）。
+- **sea-orm**: 供 Rust 使用的异步数据库 ORM。
+
+## N-API 最佳实践
+
+1. **默认使用异步 (Async)**: 在暴露执行 I/O 或数据库查询的方法时，使用 `async fn` 并返回 `napi::Result<T>`。
+2. **错误处理**: 跨越 JS 边界传递错误时使用 `napi::Error`。使用 `.map_err(|e| napi::Error::from_reason(e.to_string()))` 将内部错误（比如 `DbErr`）转换为 `napi::Error`。
+3. **数据传输对象 (DTOs)**: 为输入和输出定义清晰的 Rust Struct。在需要时使用 `serde` (`Serialize`, `Deserialize`)，针对基础返回值可使用简单的强类型属性。
+4. **分层职责**: 参考现有 `algorithm` 模块，保持 `controllers -> services -> repositories -> models` 的单向依赖。
+
+## 数据库与 ORM
+
+1. **连接池管理**: 使用在 `OnceCell` 中存储全局连接的 `establish_connection` 助手函数，以防止在热更新（HMR）重新初始化时引发崩溃（panic）。
+2. **ActiveModel vs Model**: 执行插入/更新操作时使用 `ActiveModel`，执行读取查询操作时使用 `Model`。
+3. **服务层 (Services Layer)**: 所有的数据库查询逻辑应保持在 `repositories/` 或 `services/` 层，使 N-API 所在的 `controllers/` 控制器层保持轻量。
+
+## 新增模块清单（对齐现有 algorithm 模式）
+
+1. 新增 `models/<module>.rs` 与 `handlers/dto/<module>.rs`。
+2. 新增 `repositories/<module>_repository.rs` 和 `services/<module>_service.rs`。
+3. 新增 `controllers/<module>_controller.rs` 并加 `#[napi]` 导出函数。
+4. 更新各层 `mod.rs` 聚合导出。
+5. 执行 `pnpm -F backend build:debug` 更新 `index.d.ts`。
+
+## 代码示例
+
+```rust
+use napi::Result;
+use napi_derive::napi;
+use crate::db::get_db;
+
+#[napi]
+pub async fn example_fetch(id: i32) -> Result<String> {
+    let db = get_db();
+    // 执行 sea-orm 查询...
+    Ok(format!("Result for {}", id))
+}
+```

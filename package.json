@@ -1,0 +1,29 @@
+{
+  "name": "es.dtsp.graphic-manager",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "pnpm -F frontend dev",
+    "dev:desktop": "node packages/desktop/scripts/dev.mjs",
+    "build:frontend": "pnpm -F frontend build",
+    "build:desktop": "pnpm -F desktop build",
+    "build:backend": "pnpm -F backend build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.0",
+    "typescript": "^5.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "electron-winstaller",
+      "esbuild"
+    ],
+    "ignoredBuiltDependencies": [
+      "@swc/core"
+    ]
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.8.11"
+  }
+}

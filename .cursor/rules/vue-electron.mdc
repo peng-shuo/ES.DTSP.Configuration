@@ -1,0 +1,41 @@
+---
+description: Vue + Electron 渲染进程开发规范（贴合当前项目）
+globs: packages/frontend/src/renderer/**/*.{vue,ts,tsx}
+alwaysApply: false
+---
+
+# 前端开发规范 (Vue + Electron)
+
+## 项目现状
+
+- 前端渲染进程代码位于 `packages/frontend/src/renderer`。
+- Electron 主进程 IPC 注册位于 `packages/desktop/src/main/api.ts`。
+- preload 仅暴露 `window.ipcRenderer`，前端通过 `api/*.ts` 做强类型封装，不直接在页面散落 `invoke` 调用。
+
+## Vue 组件规范
+
+1. 统一使用 `<script setup lang="ts">`。
+2. 所有对话框可见性统一采用 `defineModel<boolean>('show', { required: true })` + `v-model:show`。
+3. 业务错误统一 `message.error(getErrorMessage(e))`，避免 `e.toString()`。
+4. 可复用列表页优先复用 `useCrudPage`、`useCrudDialogs` 与 `components/crud/*`。
+
+## IPC 与 API 规范
+
+1. 页面组件只调用 `src/renderer/api/*.ts` 中的方法。
+2. `api/*.ts` 统一使用 `window.ipcRenderer.invoke('channel', ...args)`。
+3. channel 命名遵循 `moduleAction`（例如 `algorithmGetPage`）。
+4. 新增 IPC 时，必须同步更新后端 `#[napi]` 导出、主进程 handler、渲染进程 API 封装。
+
+## 示例（推荐调用方式）
+
+```ts
+import { algorithmApi } from '../../api';
+import { getErrorMessage } from '../../utils/error';
+
+try {
+  const pageResult = await algorithmApi.getPage(1, 10, keyword);
+  tableData.value = pageResult.list;
+} catch (e) {
+  message.error(getErrorMessage(e));
+}
+```

@@ -1,0 +1,33 @@
+---
+description: Vue 渲染进程目录结构与分层职责（贴合当前项目）
+globs: packages/frontend/src/renderer/**/*
+alwaysApply: false
+---
+
+# Vue 前端目录结构规范
+
+开发 `packages/frontend/src/renderer` 时，遵循以下职责划分。
+
+## 目录结构（当前项目）
+
+```text
+renderer/
+├── api/          # IPC 调用封装与类型导出入口
+├── assets/       # 样式与静态资源
+├── components/   # 可复用组件（如 crud、history）
+├── composables/  # 可复用业务逻辑（如 useCrudPage/useCrudDialogs）
+├── constants/    # 常量与枚举映射
+├── layouts/      # 页面布局
+├── router/       # 路由配置
+├── stores/       # 跨页面状态
+├── utils/        # 工具函数（如错误处理）
+└── views/        # 页面模块（按业务目录拆分）
+```
+
+## 分层规则
+
+1. **`views/`**：只保留页面编排和交互，不写底层 IPC 细节。
+2. **`api/`**：集中封装 `window.ipcRenderer.invoke`，避免在页面里硬编码 channel。
+3. **`composables/`**：抽取通用 CRUD 页面行为，保持页面简洁。
+4. **`utils/error.ts`**：统一错误文案清洗，页面层只消费 `getErrorMessage`。
+5. **`router` + `layouts/defaultLayout.vue`**：新增页面时必须同步路由与菜单入口。

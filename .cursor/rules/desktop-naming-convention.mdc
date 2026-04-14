@@ -1,0 +1,20 @@
+---
+description: desktop/frontend 命名约定（以现有代码为准）
+globs: packages/{desktop,frontend}/**/*
+alwaysApply: false
+---
+
+# 命名规则
+
+## 总体原则
+
+- 遵循“与现有代码一致优先”，不要为了统一而批量重命名既有文件。
+- 新建业务模块目录使用小驼峰（如 `views/algorithm`）。
+- Vue 单文件组件文件名沿用项目现状：页面组件常用 `index.vue` / `addDialog.vue` / `detailDialog.vue`。
+
+## 关键约定
+
+1. IPC channel 使用 `moduleAction`，例如 `algorithmGetPage`。
+2. Rust 文件使用 snake_case（例如 `algorithm_service.rs`）。
+3. TS/Vue 标识符按 TypeScript 习惯：类型 PascalCase，变量和函数 camelCase。
+4. 不要引入与现有风格冲突的命名体系（如同一目录同时混用大量 kebab-case 与 camelCase 文件名）。
