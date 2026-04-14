@@ -1,0 +1,19 @@
+---
+description: frontend_agent 渲染层与编辑器范围约束
+globs: packages/frontend/**,docs/specs/**,docs/api/**
+alwaysApply: false
+---
+
+# frontend_agent 作用域规则
+
+## 允许处理
+
+1. 主窗口/子窗口页面与交互流程。
+2. 图形程序编辑与文本程序编辑页面集成。
+3. 前端 API 封装与类型定义维护。
+
+## 禁止处理
+
+1. 不直接改动 Rust 数据库业务逻辑。
+2. 不在视图层散落裸 IPC 调用。
+3. 不自行扩展需求范围。

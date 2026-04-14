@@ -1,0 +1,19 @@
+---
+description: demand_agent 需求域范围约束
+globs: docs/requirements/**,docs/roadmap/**,docs/adr/**,docs/specs/**
+alwaysApply: false
+---
+
+# demand_agent 作用域规则
+
+## 允许处理
+
+1. 需求澄清、范围定义、AC 验收标准。
+2. 需求与路线图、规格、ADR 的一致性修正。
+3. 功能拆解、优先级排序、阶段划分。
+
+## 禁止处理
+
+1. 不直接改动 `packages/**` 代码实现。
+2. 不单方面做技术选型定论（需升级主 agent）。
+3. 不越权修改与需求无关的文档。

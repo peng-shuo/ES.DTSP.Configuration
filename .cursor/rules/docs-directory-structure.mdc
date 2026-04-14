@@ -1,0 +1,66 @@
+---
+description: 限定仓库 docs 目录结构，新增与归档文档时遵循
+globs: docs/**,.cursor/rules/docs-directory-structure.mdc
+alwaysApply: false
+---
+
+# docs 目录结构规范
+
+## 适用范围
+
+- 路径：`docs/` 及其子目录。
+- 目的：需求、架构、规格、决策与协作文档统一归档，避免随意堆在根目录或其它路径。
+
+## 允许的顶层目录
+
+仅允许下列 **一级子目录**（名称固定，小写）：
+
+| 目录 | 用途摘要 |
+|------|----------|
+| `assets/` | 图片、截图、导出图等静态资源 |
+| `requirements/` | 需求、用户故事、验收标准 |
+| `flows/` | 用例与业务流程说明 |
+| `glossary/` | 术语表 |
+| `constraints/` | 非功能需求与约束 |
+| `traceability/` | 需求追溯矩阵或列表 |
+| `architecture/` | 系统/模块架构说明 |
+| `specs/` | 详细设计与模块规格 |
+| `adr/` | 架构决策记录（ADR） |
+| `api/` | HTTP/IPC 等接口约定 |
+| `roadmap/` | 版本规划与里程碑 |
+| `reviews/` | 评审纪要、需求变更留痕 |
+
+## 允许位于 `docs/` 根目录的文件
+
+- `README.md`：总索引与导航（**必须保留**，并随目录职责更新链接）。
+- `todo_list.md`：文档整理待办清单（临时维护文件，后续可迁移到 `reviews/`）。
+
+**禁止**在 `docs/` 根目录随意新增其它 Markdown 或大量零散文件；若内容不属于上述任一类，先归入最接近的一类，或经团队同意扩展本规则后再新增顶层目录。
+
+## 新增顶层目录
+
+若业务确需增加新的文档大类：
+
+1. 在 `.cursor/rules/docs-directory-structure.mdc` 中更新「允许的顶层目录」表。
+2. 在 `docs/README.md` 中增加对应行与链接。
+3. 在新目录下添加 `README.md` 说明该目录作用与约定。
+
+禁止仅在实际仓库中新建文件夹而不更新规则与总索引。
+
+## 文件放置规则
+
+1. **静态资源**（图片、PDF 等）放在 `docs/assets/`，由主题文档用相对路径引用。
+2. **主题文档**放在对应语义目录下，例如接口说明在 `docs/api/`，架构说明在 `docs/architecture/`。
+3. 避免使用 `docs/assest`、`docs/doc`、`docs/temp` 等非标准拼写或临时目录；历史路径应迁移到 `assets/` 并修正链接。
+
+## 文件命名规则（强制）
+
+1. `docs/` 下新增文件名统一使用 **下划线风格**：`xxx_xxx`。
+2. 推荐正则：`^[a-z0-9]+(_[a-z0-9]+)*\\.(md|docx|png|jpg|jpeg|webp|svg)$`。
+3. **例外文件**：`README.md`（目录说明文件）允许使用大写约定，不受第 2 条限制。
+4. ADR 文件推荐：`NNNN_xxx_xxx.md`（例如 `0001_tech_stack_and_dual_db_strategy.md`）。
+
+## AI 与协作者操作提示
+
+- 创建或移动文档时，先对照上表选择目录；不确定时优先阅读各目录下的 `README.md`。
+- 不要在没有更新本规则的情况下在 `docs/` 下新建与上表无关的一级目录。

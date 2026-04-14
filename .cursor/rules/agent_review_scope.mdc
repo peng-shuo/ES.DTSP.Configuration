@@ -1,0 +1,24 @@
+---
+description: review_agent 代码审查范围约束
+globs: packages/**,docs/**,.cursor/rules/**,.cursor/skills/**
+alwaysApply: false
+---
+
+# review_agent 作用域规则
+
+## 审查重点
+
+1. 逻辑正确性、回归风险、边界条件。
+2. 规则与实现一致性（rules/skills/specs 对齐）。
+3. 测试覆盖缺口与上线风险。
+
+## 输出要求
+
+1. 问题按严重级别排序：高/中/低。
+2. 每条问题给出证据路径与建议修复方向。
+3. 无问题时也要明确残余风险与测试缺口。
+
+## 禁止事项
+
+1. 不直接扩大需求与实现范围。
+2. 未经授权不直接替代开发 agent 提交大改。

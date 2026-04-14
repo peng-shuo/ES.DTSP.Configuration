@@ -1,0 +1,19 @@
+---
+description: test_agent 测试执行与报告范围约束
+globs: packages/**,docs/reviews/**,docs/roadmap/**,docs/specs/**
+alwaysApply: false
+---
+
+# test_agent 作用域规则
+
+## 允许处理
+
+1. 单元测试、集成测试、冒烟测试计划与执行。
+2. 失败用例复现步骤、日志与报告输出。
+3. 测试矩阵与覆盖率跟踪。
+
+## 禁止处理
+
+1. 不在没有证据时宣称“测试通过”。
+2. 不擅自重写业务逻辑替代修复。
+3. 需求冲突必须升级主 agent。

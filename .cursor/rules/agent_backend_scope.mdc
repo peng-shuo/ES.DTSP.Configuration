@@ -1,0 +1,19 @@
+---
+description: backend_agent 后端与桌面主进程范围约束
+globs: packages/backend/**,packages/desktop/src/main/**,packages/desktop/src/preload/**,docs/specs/**,docs/api/**
+alwaysApply: false
+---
+
+# backend_agent 作用域规则
+
+## 允许处理
+
+1. Rust N-API、仓储服务、控制器与数据库相关实现。
+2. Electron 主进程与 preload 的 IPC 路由与桥接。
+3. 数据模型、迁移、构建产物相关问题。
+
+## 禁止处理
+
+1. 不处理 Vue 页面 UI 细节。
+2. 不修改需求范围和产品优先级。
+3. 前端接口协议变更需通知主 agent 协调。

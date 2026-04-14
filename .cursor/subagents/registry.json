@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "description": "项目专用 subagent 注册表",
+  "orchestration": {
+    "owner": "main_agent",
+    "policy": "main_agent_can_freely_compose_subagents",
+    "response_contract": {
+      "format": ["结论", "风险", "待决策"],
+      "max_lines_recommended": 12,
+      "no_long_background": true
+    }
+  },
+  "subagents": [
+    {
+      "id": "demand_agent",
+      "definition": ".cursor/subagents/demand_agent.md",
+      "allowed_rules": [
+        ".cursor/rules/docs-directory-structure.mdc",
+        ".cursor/rules/agent_demand_scope.mdc"
+      ],
+      "allowed_skills": [
+        ".cursor/skills/demand_agent_skill/SKILL.md"
+      ]
+    },
+    {
+      "id": "backend_agent",
+      "definition": ".cursor/subagents/backend_agent.md",
+      "allowed_rules": [
+        ".cursor/rules/rust-napi.mdc",
+        ".cursor/rules/desktop-naming-convention.mdc",
+        ".cursor/rules/pnpm-monorepo.mdc",
+        ".cursor/rules/agent_backend_scope.mdc"
+      ],
+      "allowed_skills": [
+        ".cursor/skills/backend_agent_skill/SKILL.md",
+        ".cursor/skills/add-ipc-route/SKILL.md",
+        ".cursor/skills/build-native/SKILL.md",
+        ".cursor/skills/add-module-sql/SKILL.md"
+      ]
+    },
+    {
+      "id": "frontend_agent",
+      "definition": ".cursor/subagents/frontend_agent.md",
+      "allowed_rules": [
+        ".cursor/rules/vue-electron.mdc",
+        ".cursor/rules/vue-directory-structure.mdc",
+        ".cursor/rules/pnpm-monorepo.mdc",
+        ".cursor/rules/agent_frontend_scope.mdc"
+      ],
+      "allowed_skills": [
+        ".cursor/skills/frontend_agent_skill/SKILL.md",
+        ".cursor/skills/create-frontend-module/SKILL.md",
+        ".cursor/skills/add-ipc-route/SKILL.md"
+      ]
+    },
+    {
+      "id": "review_agent",
+      "definition": ".cursor/subagents/review_agent.md",
+      "allowed_rules": [
+        ".cursor/rules/agent_review_scope.mdc"
+      ],
+      "allowed_skills": [
+        ".cursor/skills/review_agent_skill/SKILL.md"
+      ]
+    },
+    {
+      "id": "test_agent",
+      "definition": ".cursor/subagents/test_agent.md",
+      "allowed_rules": [
+        ".cursor/rules/pnpm-monorepo.mdc",
+        ".cursor/rules/agent_test_scope.mdc"
+      ],
+      "allowed_skills": [
+        ".cursor/skills/test_agent_skill/SKILL.md"
+      ]
+    }
+  ]
+}
