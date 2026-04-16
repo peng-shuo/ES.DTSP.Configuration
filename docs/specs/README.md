@@ -13,3 +13,5 @@
 
 - `dual_db_implementation_spec.md`：MySQL + SQLite 双库实现规格（仓储抽象、迁移、测试矩阵、切换策略）。
 - `mvp_phase1_implementation_spec.md`：第一阶段 MVP 实现规格（主窗/子窗、SQLite、保存语义、测试清单）。
+
+TODO 暂定技术和业务分为两个模块放到同一个文档中，审核是分开的 分别有审核和确定环节

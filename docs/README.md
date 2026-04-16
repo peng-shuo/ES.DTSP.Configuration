@@ -8,12 +8,12 @@
 |------|------|
 | [assets](./assets/README.md) | 图片、截图、导出图等静态资源 |
 | [requirements](./requirements/README.md) | 需求说明、范围、用户故事、验收标准 |
-| [flows](./flows/README.md) | 用例与业务流程（含与配图对应的文字说明） |
+| [flows](./flows/README.md) | 用例与业务流程（含与配图对应的文字说明）(弱化) TODO |
 | [glossary](./glossary/README.md) | 术语表与领域名词对照 |
-| [constraints](./constraints/README.md) | 非功能需求与约束（性能、安全、部署等） |
-| [traceability](./traceability/README.md) | 需求与设计/测试的追溯关系 |
-| [architecture](./architecture/README.md) | 系统与模块架构说明 |
-| [specs](./specs/README.md) | 详细设计与模块规格 |
+| [constraints](./constraints/README.md) | 非功能需求与约束（性能、安全、部署等） (弱化) TODO |
+| [traceability](./traceability/README.md) | 需求与设计/测试的追溯关系 （不要） TODO |
+| [architecture](./architecture/README.md) | 系统与模块架构说明(业务和技术区分) TODO |
+| [specs](./specs/README.md) | 模块详细设计与规格（业务和技术区分？） TODO |
 | [adr](./adr/README.md) | 架构决策记录（ADR） |
 | [api](./api/README.md) | 对外/对内接口约定（HTTP、IPC 等） |
 | [roadmap](./roadmap/README.md) | 版本规划与里程碑 |
