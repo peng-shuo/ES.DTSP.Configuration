@@ -11,5 +11,4 @@
 
 ## 推荐阅读
 
-- `mvp_phase1_roadmap.md`：第一阶段 MVP 里程碑与风险控制。
-- `mvp_phase1_task_breakdown.md`：第一阶段 MVP 文件级可执行任务清单。
+（暂无；阶段路线图将在需求基线确认后在此目录补充。）

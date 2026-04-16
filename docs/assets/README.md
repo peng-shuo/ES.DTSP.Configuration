@@ -10,6 +10,6 @@
 
 ## 约定
 
-- Markdown 正文放在对应主题目录（如 `architecture/`、`flows/`），此处 **只放被引用的文件**。
+- Markdown 正文放在对应主题目录（如 `architecture/technical/`、`flows/`），此处 **只放被引用的文件**。
 - 文件命名建议：`主题-简述-YYYYMMDD.ext`，避免无意义名称。
 - 大文件注意仓库体积；能矢量或压缩的优先。

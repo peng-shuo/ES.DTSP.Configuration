@@ -13,7 +13,7 @@
 
 ## 1. 总架构图（仿控制器分层）
 
-![仿控制器 — 运行层 / 组态层 / 数据层 / 对外接口](../assets/project_architecture.png)
+![仿控制器 — 运行层 / 组态层 / 数据层 / 对外接口](../../assets/project_architecture.png)
 
 *图：组态层中含工程管理、各 IEC 编辑器与编译器；工程管理对应 Electron 主窗口，各编辑器对应子窗口。*
 
@@ -32,7 +32,7 @@
 
 ## 2. 产品边界（来自 function_block 示意图）
 
-![ESController — 软件对象结构及语言嵌套关系](../assets/function_block.png)
+![ESController — 软件对象结构及语言嵌套关系](../../assets/function_block.png)
 
 *图：Program / FB / FUN 与全局参数、数据类型、位号及外围工具的关系。*
 
@@ -66,7 +66,7 @@
 **设计要点：**
 
 1. **主窗口不承载完整画布/Monaco 编辑区**（或可仅做轻量预览），避免与「独立子窗口编辑器」职责重叠。
-2. **子窗口生命周期**：从主窗口「打开某 POU / 某语言视图」创建；关闭前通过 IPC 提示保存；同一 POU 重复打开策略（单实例复用 vs 多实例）需在 `docs/specs/` 明确。
+2. **子窗口生命周期**：从主窗口「打开某 POU / 某语言视图」创建；关闭前通过 IPC 提示保存；同一 POU 重复打开策略（单实例复用 vs 多实例）需在 `docs/specs/technical/` 明确。
 3. **主进程**：维护窗口注册表（`windowId` ↔ 工程内对象 id / 编辑器类型）、统一下发工程状态与后端调用；**preload** 暴露安全 IPC。
 4. **渲染进程**：主窗口与子窗口可**共用同一 Vue 构建产物**，通过 URL hash/query（如 `?role=editor&lang=fbd&pouId=`）或独立 `entry HTML` 区分布局；子窗口仅挂载对应编辑器布局，减少无关依赖。
 
@@ -103,7 +103,7 @@
 ### 5.4 运行层与对外接口
 
 - **运行层**能力（调度、报警、趋势、扰动等）多在控制器侧；本仓库若先做组态工具，可通过 `docs/roadmap/` 划分「仅组态」与「联调运行时」阶段。C++ 运行层模块与组态编译衔接、外部读取功能块数据等详见 [**C++ 运行层说明**](./cpp_runtime_desc.md)。
-- **对外接口**（OPC、Modbus 等）与 Electron 主进程或独立服务的关系在 `docs/specs/` 中单独立项，避免与编辑器窗口模型耦合。
+- **对外接口**（OPC、Modbus 等）与 Electron 主进程或独立服务的关系在 `docs/specs/technical/` 中单独立项，避免与编辑器窗口模型耦合。
 
 ---
 
@@ -125,10 +125,10 @@
 | 主题 | 建议路径 |
 |------|----------|
 | 业务需求与范围 | `docs/requirements/` |
-| 多窗口 IPC、POU 打开策略 | `docs/specs/` + `docs/api/` |
-| POU / 语言规则 | `docs/specs/` + `docs/glossary/` |
+| 多窗口 IPC、POU 打开策略 | `docs/specs/technical/` + `docs/api/` |
+| POU / 语言规则 | `docs/specs/business/`、`docs/specs/technical/` + `docs/glossary/` |
 | 关键架构抉择 | `docs/adr/` |
-| 总览与配图 | `docs/architecture/`（本文）+ `docs/assets/`（推荐存放架构图） |
+| 总览与配图 | `docs/architecture/technical/`（本文）+ `docs/assets/`（推荐存放架构图） |
 
 ---
 

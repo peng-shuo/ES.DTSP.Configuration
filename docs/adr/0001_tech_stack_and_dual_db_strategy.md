@@ -99,9 +99,9 @@
 
 ## 落地文档
 
-- 详细技术规格见：`docs/specs/dual_db_implementation_spec.md`
-- 运行层协作见：`docs/architecture/cpp_runtime_desc.md`
-- 总体架构见：`docs/architecture/openplc_style_editor.md`
+- 详细技术规格见：`docs/specs/technical/dual_db_implementation_spec.md`
+- 运行层协作见：`docs/architecture/technical/cpp_runtime_desc.md`
+- 总体架构见：`docs/architecture/technical/openplc_style_editor.md`
 
 ## 后续动作
 

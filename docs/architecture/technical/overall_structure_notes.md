@@ -2,7 +2,7 @@
 
 ## 1. 配图
 
-![总体结构图](../assets/overall_structure.png)
+![总体结构图](../../assets/overall_structure.png)
 
 > 图片来源：`docs/assets/overall_structure.png`
 
@@ -53,20 +53,20 @@
 
 ---
 
-## 5. 对 MVP 的约束含义
+## 5. 与交付阶段的对应关系（示意）
 
-在 `MVP 第一阶段`（已确认）中，本图可先落地左侧组态主链路：
+本图用于理解组态主链路与运行侧关系，可按阶段裁剪落地：
 
 1. 主窗口工程管理 + 子窗口编辑（FBD/ST）。
-2. 本地 SQLite 持久化。
-3. 暂不接入完整运行层联调与编译导出。
+2. 本地 SQLite 持久化（具体范围以 `docs/requirements/`、`docs/roadmap/` 当前基线为准）。
+3. 暂不接入完整运行层联调与编译导出时，可先只落地左侧组态主链路。
 
-这与当前 `docs/requirements/mvp_phase1_scope.md` 的范围一致，运行层相关模块作为后续阶段扩展。
+运行层相关模块在目标范围确认后再扩展。
 
 ---
 
 ## 6. 后续维护约定
 
 1. 每次调整跨层调用关系（IPC、本地 API、远程 API），同步更新本文件与配图。
-2. 新增协议或数据库类型时，同时补充 `docs/api/` 与 `docs/specs/` 的契约/实现细节。
+2. 新增协议或数据库类型时，同时补充 `docs/api/` 与 `docs/specs/technical/` 的契约/实现细节。
 3. 若 `接口层(c++)` 的数据格式从 JSON 字符串升级为结构化协议（如 Protobuf），需新增 ADR 记录。

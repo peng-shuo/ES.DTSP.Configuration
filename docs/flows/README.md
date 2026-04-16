@@ -11,7 +11,7 @@
 ## 约定
 
 - 图文对照时在正文标明资源路径，例如：`../assets/xxx.png`。
-- 涉及多个模块时，与 `architecture/`、`specs/` 交叉引用。
+- 涉及多个模块时，与 `architecture/`（`business/` / `technical/`）、`specs/`（`business/` / `technical/`）交叉引用。
 
 // TODO 这里明确好主模块和分支模块的用例负责人
 如何写

@@ -53,6 +53,17 @@ alwaysApply: false
 2. **主题文档**放在对应语义目录下，例如接口说明在 `docs/api/`，架构说明在 `docs/architecture/`。
 3. 避免使用 `docs/assest`、`docs/doc`、`docs/temp` 等非标准拼写或临时目录；历史路径应迁移到 `assets/` 并修正链接。
 
+## `architecture/` 与 `specs/` 的二级目录（业务 / 技术）
+
+在 **不新增 `docs/` 一级目录** 的前提下，允许在 `architecture/`、`specs/` 下使用固定二级目录名：
+
+| 二级目录 | 用途 |
+|----------|------|
+| `business/` | 业务视角：边界、角色、业务能力、业务规则与验收口径 |
+| `technical/` | 技术视角：仓库包、运行时、数据结构、实现规格与测试要点 |
+
+约定 **先有业务文档（`business/`），再整理对应技术文档（`technical/`）**；各二级目录下应有 `README.md` 说明职责与当前文档列表。
+
 ## 文件命名规则（强制）
 
 1. `docs/` 下新增文件名统一使用 **下划线风格**：`xxx_xxx`。

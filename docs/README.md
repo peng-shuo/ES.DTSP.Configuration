@@ -12,8 +12,8 @@
 | [glossary](./glossary/README.md) | 术语表与领域名词对照 |
 | [constraints](./constraints/README.md) | 非功能需求与约束（性能、安全、部署等） (弱化) TODO |
 | [traceability](./traceability/README.md) | 需求与设计/测试的追溯关系 （不要） TODO |
-| [architecture](./architecture/README.md) | 系统与模块架构说明(业务和技术区分) TODO |
-| [specs](./specs/README.md) | 模块详细设计与规格（业务和技术区分？） TODO |
+| [architecture](./architecture/README.md) | 系统与模块架构说明（[业务](./architecture/business/README.md) / [技术](./architecture/technical/README.md)） |
+| [specs](./specs/README.md) | 模块详细设计与规格（[业务](./specs/business/README.md) / [技术](./specs/technical/README.md)） |
 | [adr](./adr/README.md) | 架构决策记录（ADR） |
 | [api](./api/README.md) | 对外/对内接口约定（HTTP、IPC 等） |
 | [roadmap](./roadmap/README.md) | 版本规划与里程碑 |
@@ -23,16 +23,12 @@
 
 ### 架构类延伸阅读
 
-- [类 OpenPLC Editor 桌面组态工具 — 架构设想](./architecture/openplc_style_editor.md)（IEC 61131-3 对象关系、X6 / Monaco / 现有三包分工）
-- [总体结构图说明（overall_structure）](./architecture/overall_structure_notes.md)（组态层/运行层/数据层协作与仓库映射）
-- [C++ 运行层说明](./architecture/cpp_runtime_desc.md)（运行层模块、组态编译产物、与 Rust/Electron 分工、外部读取功能块数据）
+- [类 OpenPLC Editor 桌面组态工具 — 架构设想](./architecture/technical/openplc_style_editor.md)（IEC 61131-3 对象关系、X6 / Monaco / 现有三包分工）
+- [总体结构图说明（overall_structure）](./architecture/technical/overall_structure_notes.md)（组态层/运行层/数据层协作与仓库映射）
+- [C++ 运行层说明](./architecture/technical/cpp_runtime_desc.md)（运行层模块、组态编译产物、与 Rust/Electron 分工、外部读取功能块数据）
 - [ADR-0001：图形引擎与技术栈对比及双库策略](./adr/0001_tech_stack_and_dual_db_strategy.md)
-- [ADR-0002：基于用户故事的 MVP 范围重梳理](./adr/0002_mvp_scope_from_user_story.md)
-- [双库（MySQL + SQLite）技术规格草案](./specs/dual_db_implementation_spec.md)
+- [双库（MySQL + SQLite）技术规格草案](./specs/technical/dual_db_implementation_spec.md)
 
-### MVP 决策落地文档
+### 范围与 MVP 基线
 
-- [MVP 第一阶段需求基线](./requirements/mvp_phase1_scope.md)
-- [MVP 第一阶段路线图](./roadmap/mvp_phase1_roadmap.md)
-- [MVP 第一阶段可执行任务清单](./roadmap/mvp_phase1_task_breakdown.md)
-- [MVP 第一阶段实现规格](./specs/mvp_phase1_implementation_spec.md)
+此前基于不完整用户故事整理的 MVP 第一阶段文档已废止；新的需求基线与路线图将在 `requirements/`、`roadmap/` 重建后以该处为准。

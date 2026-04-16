@@ -12,4 +12,3 @@
 ## 推荐阅读
 
 - `0001_tech_stack_and_dual_db_strategy.md`：图形引擎、前后端与数据库选型对比及双库决策。
-- `0002_mvp_scope_from_user_story.md`：基于用户故事重梳理的 MVP 范围与待确认决策。
